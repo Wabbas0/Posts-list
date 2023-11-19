@@ -7,6 +7,21 @@ import HelloWorld from './components/HelloWorld.vue'
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
+  <div class="chat-notification">
+    <div class="chat-notification-logo-wrapper">
+      <img class="chat-notification-logo" src="/img/logo.svg" alt="ChitChat Logo">
+    </div>
+    <div class="chat-notification-content">
+      <h4 class="chat-notification-title">ChitChat</h4>
+      <p class="chat-notification-message">You have a new message!</p>
+    </div>
+    <button class="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700">
+    Click me
+  </button>
+
+  </div>
+
+
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
 
