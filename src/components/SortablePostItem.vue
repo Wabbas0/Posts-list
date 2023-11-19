@@ -7,7 +7,7 @@
         :aria-label="`Move post ${props.post.id} up`"
         :title="`Move post ${props.post.id} up`"
         class="post-item-button"
-        @click.prevent="movePost(props.post.id, 'UP')"
+        @click.prevent="store.movePost(props.post.id, 'UP')"
       >
         <i class="fa-solid fa-chevron-up fa-sm"></i>
       </button>
@@ -16,7 +16,7 @@
         :aria-label="`Move post ${props.post.id} down`"
         :title="`Move post ${props.post.id} down`"
         class="post-item-button"
-        @click.prevent="movePost(props.post.id, 'DOWN')"
+        @click.prevent="store.movePost(props.post.id, 'DOWN')"
       >
         <i class="fa-solid fa-chevron-down fa-sm"></i>
       </button>
@@ -25,19 +25,17 @@
 </template>
 
 <script setup lang="ts">
+import { usePostsStore } from '@/stores/posts'
+
 interface SortablePostItemProps {
   post: {
     id: number
   }
-  position?: 'FIRST' | 'LAST'
+  position?: 'FIRST' | 'LAST' | ''
 }
 
 const props = defineProps<SortablePostItemProps>()
-
-const movePost = (postId: number, direction: 'UP' | 'DOWN') => {
-  // Mocking the movePost function for now
-  console.log(`Mocked movePost: Move post ${postId} ${direction}`)
-}
+const store = usePostsStore()
 </script>
 
 <style scoped lang="scss">
@@ -50,8 +48,6 @@ const movePost = (postId: number, direction: 'UP' | 'DOWN') => {
 }
 
 .post-item-button {
-  // @apply -my-2 p-2 leading-none text-lavender-500;
-  // @apply hover:bg-lavender-200;
   @apply my-2 p-2 leading-none;
 
   transition: all 0.1s ease;
