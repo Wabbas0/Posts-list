@@ -49,9 +49,11 @@ const store = usePostsStore()
 
 .post-item-button {
   @apply my-2 p-2 leading-none;
-
   transition: all 0.1s ease;
   border-radius: var(--default-border-radius);
+  &:hover {
+    background-color: #ebe9f7;
+  }
 }
 
 .post-item-icons {
