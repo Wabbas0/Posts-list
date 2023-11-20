@@ -2,7 +2,11 @@
   <section class="post-list-container">
     <h2 class="post-list-title">Sortable Post List</h2>
 
-    <TransitionGroup class="post-list" tag="ul" name="list" v-if="store.posts.length">
+    <div class="flex items-center justify-center h-screen" v-if="isLoading">
+      <i class="fas fa-spinner fa-spin"></i>
+    </div>
+
+    <TransitionGroup class="post-list" tag="ul" name="list" v-else-if="store.posts.length">
       <SortablePostItem
         v-for="(post, index) in store.posts"
         :post="post"
@@ -12,7 +16,8 @@
     </TransitionGroup>
 
     <div class="post-list-empty custom-card" v-else>
-      <p>No posts found</p>
+      <p class="error-message" v-if="errorMessage">{{ errorMessage }}</p>
+      <p v-else>No posts found</p>
     </div>
   </section>
 </template>
@@ -21,19 +26,25 @@
 import SortablePostItem from './SortablePostItem.vue'
 import { usePostsStore } from '@/stores/posts'
 import { getEdgePosition } from '@/utils/arrayUtils'
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { fetchPosts } from '@/services/ApiService'
 
 const store = usePostsStore()
 const postListLength = computed(() => store.posts.length)
+const errorMessage = ref('')
+const isLoading = ref(false)
 
 onMounted(async () => {
+  isLoading.value = true
   try {
     const res = await fetchPosts()
     const firstFivePosts = res.slice(0, 5)
     store.addPosts(firstFivePosts)
   } catch (error) {
+    errorMessage.value = 'An error occurred while fetching posts'
     console.log(error)
+  } finally {
+    isLoading.value = false
   }
 })
 </script>
