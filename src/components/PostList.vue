@@ -6,7 +6,7 @@
       <i class="fas fa-spinner fa-spin"></i>
     </div>
 
-    <TransitionGroup class="post-list" tag="ul" name="list" v-else-if="store.posts.length">
+    <TransitionGroup class="post-list" tag="ul" name="list" v-if="store.posts.length">
       <SortablePostItem
         v-for="(post, index) in store.posts"
         :post="post"

@@ -3,7 +3,7 @@ import { shallowMount, VueWrapper } from '@vue/test-utils'
 import { usePostsStore } from '@/stores/posts'
 import type { PostsStore } from '@/stores/posts'
 import PostList from '@/components/PostList.vue'
-import PostItem from '@/components/SortablePostItem.vue'
+import SortablePostItem from '@/components/SortablePostItem.vue'
 import { createTestingPinia } from '@pinia/testing'
 import { samplePosts } from '@/__mocks__/posts'
 
@@ -24,7 +24,8 @@ describe('Post List', () => {
   })
 
   it('Should render the correct number of posts', () => {
-    const postItems = wrapper.findAllComponents(PostItem)
+    const postItems = wrapper.findAllComponents(SortablePostItem)
+    console.log(postItems)
     expect(postItems.length).toBe(store.posts.length)
   })
 
