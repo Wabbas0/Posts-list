@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --green: #25FF90;
+    --primary-color: var(--green);
+    --default-border-radius: 0.3rem;
+    --default-box-shadow: 4px 4px 0.6rem rgba(0, 0, 0, 0.10);
+}
+
+* {
+    @apply outline-indigo-500;
+    /* Assuming you want a blue outline on focus */
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    color: #545454;
+    overflow-y: scroll;
+}
+
+/* Styles for custom card */
+.custom-card {
+    border: 1px solid #e9e9e9;
+    border-radius: var(--default-border-radius);
+    box-shadow: var(--default-box-shadow);
+    overflow: hidden;
+}
+
+/* Styles for page wrapper */
+.page-container {
+    margin-inline: auto;
+    max-width: 1600px;
+    min-width: 1260px;
+    /* Added a min-width for responsiveness */
+    margin: 0 auto;
+    padding: 3.25rem;
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    gap: 4rem;
+
+    @media screen and (min-width: 900px) {
+        grid-template-rows: 1fr;
+        gap: 6rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        height: 250px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        clip-path: polygon(0 0, 0% 100%, 100% 0);
+        z-index: -1;
+        background-color: #6357B1;
+    }
+}
+
+/* Transitions for list animations */
+.list-move,
+.list-enter-active,
+.list-leave-active {
+    transition: all 0.3s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+.list-leave-active {
+    position: absolute;
+}

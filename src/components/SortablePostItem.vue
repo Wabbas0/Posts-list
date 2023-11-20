@@ -1,5 +1,5 @@
 <template>
-  <li class="post-item">
+  <li class="post-item custom-card">
     <p class="post-item-title">Post {{ props.post.id }}</p>
     <span class="post-item-icons" :class="{ 'self-stretch': !position }">
       <button

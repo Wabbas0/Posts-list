@@ -30,5 +30,14 @@ const props = defineProps<ActionItemProps>()
 }
 
 .action-item-button {
+  @apply py-3 px-6;
+  background-color: #25ff90;
+  border: none;
+  border-radius: calc(var(--default-border-radius) * 1.5);
+  font-weight: 600;
+
+  &:hover {
+    background: #21e682;
+  }
 }
 </style>

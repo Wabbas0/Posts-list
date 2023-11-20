@@ -4,8 +4,10 @@ import ActionList from './components/ActionList.vue'
 </script>
 
 <template>
-  <PostList />
-  <ActionList />
+  <div class="page-container items-start">
+    <PostList />
+    <ActionList />
+  </div>
 </template>
 
 <style scoped></style>

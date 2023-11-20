@@ -2,7 +2,7 @@
   <section class="post-list-container">
     <h2 class="post-list-title">Sortable Post List</h2>
 
-    <TransitionGroup tag="ul" name="post-list" v-if="store.posts.length">
+    <TransitionGroup class="post-list" tag="ul" name="list" v-if="store.posts.length">
       <SortablePostItem
         v-for="(post, index) in store.posts"
         :post="post"
@@ -11,7 +11,7 @@
       />
     </TransitionGroup>
 
-    <div class="post-list-empty" v-else>
+    <div class="post-list-empty custom-card" v-else>
       <p>No posts found</p>
     </div>
   </section>
@@ -39,20 +39,20 @@ onMounted(async () => {
 </script>
 
 <style scoped lang="scss">
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  list-style: none;
+  padding-inline-start: 0;
+}
+
 .post-list-container {
   @apply flex flex-col gap-6;
 }
 
 .post-list-title {
   @apply text-white font-semibold text-3xl;
-}
-
-.post-list {
-  @apply flex;
-  flex-direction: column;
-  gap: 28px;
-  list-style: none;
-  padding-inline-start: 0;
 }
 
 .post-list-empty {
