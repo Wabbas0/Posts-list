@@ -71,7 +71,7 @@ Ensure you have Node.js and npm installed on your machine.
 #### Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/post-list.git
+git clone https://github.com/Wabbas0/post-list.git
 cd post-list
 ```
 
