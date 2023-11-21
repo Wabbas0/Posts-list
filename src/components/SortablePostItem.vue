@@ -9,7 +9,7 @@
         class="post-item-button"
         @click.prevent="store.movePost(props.post.id, 'UP')"
       >
-        <i class="fa-solid fa-chevron-up fa-sm"></i>
+        <i class="fa-solid fa-chevron-up fa-lg"></i>
       </button>
       <button
         v-if="!(position === 'LAST')"
@@ -18,7 +18,7 @@
         class="post-item-button"
         @click.prevent="store.movePost(props.post.id, 'DOWN')"
       >
-        <i class="fa-solid fa-chevron-down fa-sm"></i>
+        <i class="fa-solid fa-chevron-down fa-lg"></i>
       </button>
     </span>
   </li>
@@ -51,6 +51,7 @@ const store = usePostsStore()
   @apply my-2 p-2 leading-none;
   transition: all 0.1s ease;
   border-radius: var(--default-border-radius);
+  color: #6357b1;
   &:hover {
     background-color: #ebe9f7;
   }

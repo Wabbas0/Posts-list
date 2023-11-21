@@ -5,14 +5,19 @@
     </div>
 
     <div class="p-6 bg-neutral-100 text-lg">
-      <ul v-if="store.postMovementHistory.length" class="bg-white divide-y custom-card">
+      <TransitionGroup
+        class="bg-white divide-y custom-card"
+        tag="ul"
+        name="fade"
+        v-if="store.postMovementHistory.length"
+      >
         <ActionItem
           v-for="(record, index) in store.postMovementHistory"
           :index="index"
           :action="record"
           :key="record.postId"
         />
-      </ul>
+      </TransitionGroup>
       <p v-else class="bg-white p-3 flex items-center custom-card">No actions commited.</p>
     </div>
   </section>
@@ -28,5 +33,14 @@ const store = usePostsStore()
 <style scoped lang="scss">
 .action-list-container {
   @apply flex flex-col;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

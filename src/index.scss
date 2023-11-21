@@ -21,6 +21,7 @@ html {
 body {
     color: #545454;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 /* Styles for custom card */
@@ -35,8 +36,6 @@ body {
 .page-container {
     margin-inline: auto;
     max-width: 1600px;
-    min-width: 1260px;
-    /* Added a min-width for responsiveness */
     margin: 0 auto;
     padding: 3.25rem;
     display: grid;
@@ -44,6 +43,7 @@ body {
     gap: 4rem;
 
     @media screen and (min-width: 900px) {
+        min-width: 1260px;
         grid-template-rows: 1fr;
         gap: 6rem;
         grid-template-columns: repeat(2, 1fr);
